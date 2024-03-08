@@ -1,0 +1,13 @@
+
+# No any logic
+- AnalyticsNetworkHandler.swift
+- HTTPStatusCodeHandler.swift
+- JSONDecoderConfigProtocol.swift
+- NSErrorHandler.swift
+- ResponseErrorHandler.swift
+- NetworkError.swift
+- NSErrorAdapter.swift
+- CommonService.swift
+
+# Resource Files
+- LocalizationFunctions.swift

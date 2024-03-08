@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "7617D2D4-2367-42FB-813D-04683BA739D8",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "SwiftCoreNetworkLayer",
+          "name" : "SwiftCoreNetworkLayer"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SwiftCoreNetworkLayerTests",
+        "name" : "SwiftCoreNetworkLayerTests"
+      }
+    }
+  ],
+  "version" : 1
+}

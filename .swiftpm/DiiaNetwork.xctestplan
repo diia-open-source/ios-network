@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "0B73CBCC-BD28-46F6-B4CF-E4F1AAE7CAF3",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "DiiaNetwork",
+          "name" : "DiiaNetwork"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "DiiaNetworkTests",
+        "name" : "DiiaNetworkTests"
+      }
+    }
+  ],
+  "version" : 1
+}
