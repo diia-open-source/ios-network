@@ -16,7 +16,7 @@ open class ApiClient<T: CommonService> {
         return sessionManager.request(service).objectSignal(keyPath: keyPath)
     }
 
-    func request<U: Decodable & ExpressibleByNilLiteral>(_ service: T, keyPath: String? = nil) -> Signal<U, NetworkError> {
+    public func request<U: Decodable & ExpressibleByNilLiteral>(_ service: T, keyPath: String? = nil) -> Signal<U, NetworkError> {
         return sessionManager.request(service).objectSignal(keyPath: keyPath)
     }
 
