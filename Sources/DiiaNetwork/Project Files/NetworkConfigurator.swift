@@ -1,9 +1,10 @@
+
 import Foundation
 import Alamofire
 
 public class NetworkConfiguration {
     public static let `default`: NetworkConfiguration = NetworkConfiguration()
-    public private(set) var logging: Bool = false
+    public private(set) var logger: NetworkLoggerProtocol?
     public private(set) var httpStatusCodeHandler: HTTPStatusCodeHandler?
     public private(set) var interceptor: RequestInterceptor?
     public private(set) var serverTrustPolicies: [String: ServerTrustEvaluating] = [:]
@@ -30,8 +31,8 @@ public class NetworkConfiguration {
                        serverTrustManager: trustManager)
     }
     
-    public func set(logging: Bool) {
-        self.logging = logging
+    public func set(logger: NetworkLoggerProtocol?) {
+        self.logger = logger
     }
     
     public func set(httpStatusCodeHandler: HTTPStatusCodeHandler?) {

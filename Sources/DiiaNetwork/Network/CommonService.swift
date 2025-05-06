@@ -1,3 +1,4 @@
+
 import Alamofire
 import Foundation
 
@@ -63,11 +64,11 @@ public extension CommonService {
             }
         }
         
-        if let url = mutableURLRequest.url, config.logging {
-            print("REQUEST: \(method.rawValue) \(url)")
-            print("Request headers: \(mutableURLRequest.allHTTPHeaderFields ?? [:])")
+        if let url = mutableURLRequest.url, let logger = config.logger {
+            logger.log("REQUEST: \(method.rawValue) \(url)")
+            logger.log("Request headers: \(mutableURLRequest.allHTTPHeaderFields ?? [:])")
             if let parameters = parameters {
-               print("Request data: \(parameters)")
+                logger.log("Request data: \(parameters)")
             }
         }
         

@@ -1,3 +1,4 @@
+
 import Foundation
 
 func localizedStringFor(_ key: String, comment: String) -> String {

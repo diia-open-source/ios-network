@@ -1,3 +1,4 @@
+
 import Foundation
 import Alamofire
 
@@ -15,8 +16,8 @@ public class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> {
         return NetworkConfiguration.default.responseErrorHandler
     }
     
-    var logging: Bool {
-        return NetworkConfiguration.default.logging
+    var logger: NetworkLoggerProtocol? {
+        return NetworkConfiguration.default.logger
     }
     
     public init(nsURLErrorHandler: NSErrorHandler = NSErrorAdapter(),
@@ -38,20 +39,20 @@ public class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> {
     }
     
     func log(response: HTTPURLResponse?, error: Error?, responseData: Data?) {
-        if logging {
+        if let logger = logger {
             if let response = response {
-                print("RESPONSE: \(response.url?.absoluteString ?? "")")
-                print("HEADERS: \(response.allHeaderFields as? [String: String] ?? [:])")
+                logger.log("RESPONSE: \(response.url?.absoluteString ?? "")")
+                logger.log("HEADERS: \(response.allHeaderFields as? [String: String] ?? [:])")
             }
             if let error = error {
-                print("Error description: \(error.localizedDescription)")
+                logger.log("Error description: \(error.localizedDescription)")
             }
             
             if let responseData = responseData,
                 let value = try? JSONSerialization.jsonObject(with: responseData),
                 let rawData = try? JSONSerialization.data(withJSONObject: value, options: [.prettyPrinted]),
                 let jsonString = String(data: rawData, encoding: String.Encoding.utf8) {
-                print("Response data: \(jsonString)")
+                logger.log("Response data: \(jsonString)")
             }
         }
     }
@@ -122,8 +123,8 @@ public class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> {
     }
     
     func failedHandlingResponse(error: Error) {
-        if logging {
-            print(error)
+        if let logger = logger {
+            logger.log(error)
         }
     }
 }
