@@ -115,7 +115,7 @@ class NetworkResponseHandlerTests: XCTestCase {
     func testFailedHandlingResponseWithLogging() {
         // Arrange
         let handler = NetworkResponseHandler<GeneralResponse>()
-        NetworkConfiguration.default.set(logging: true)
+        NetworkConfiguration.default.set(logger: NetworkLoggerMock())
         let error = NSError(domain: "https://example.com", code: 500, userInfo: ["message": "Internal Server Error"])
         
         // Act & Assert
