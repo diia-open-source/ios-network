@@ -2,4 +2,4 @@
 import Foundation
 import Alamofire
 
-class RequestInterceptorMock: RequestInterceptor {}
+final class RequestInterceptorMock: RequestInterceptor {}

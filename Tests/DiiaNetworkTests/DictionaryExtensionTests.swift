@@ -1,7 +1,7 @@
 
 import XCTest
 
-class DictionaryExtensionTests: XCTestCase {
+final class DictionaryExtensionTests: XCTestCase {
 
     func test_subscript_getter() {
         // Arrange

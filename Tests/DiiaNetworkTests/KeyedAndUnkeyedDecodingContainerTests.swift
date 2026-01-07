@@ -2,7 +2,7 @@
 import XCTest
 @testable import DiiaNetwork
 
-class KeyedAndUnkeyedDecodingContainerTests: XCTestCase {
+final class KeyedAndUnkeyedDecodingContainerTests: XCTestCase {
     let jsonOnlyMandatory = """
             {
                 "nestedDict": {

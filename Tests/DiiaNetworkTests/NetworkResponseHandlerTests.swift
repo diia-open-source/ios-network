@@ -2,7 +2,7 @@
 import XCTest
 @testable import DiiaNetwork
 
-class NetworkResponseHandlerTests: XCTestCase {
+final class NetworkResponseHandlerTests: XCTestCase {
 
     func testParseGeneralModel() {
         // Arrange

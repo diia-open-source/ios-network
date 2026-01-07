@@ -2,6 +2,6 @@
 import Foundation
 @testable import DiiaNetwork
 
-class HTTPStatusCodeHandlerMock: HTTPStatusCodeHandler {
+final class HTTPStatusCodeHandlerMock: HTTPStatusCodeHandler {
     func handleStatusCode(statusCode: Int) {}
 }

@@ -2,7 +2,7 @@
 import Foundation
 import Alamofire
 
-public class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> {
+public final class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> {
     private let nsURLErrorHandler: NSErrorHandler
     private let decoderConfig: JSONDecoderConfigProtocol?
     private let httpStatusCodeOk = 200

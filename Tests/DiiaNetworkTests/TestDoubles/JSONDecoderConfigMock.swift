@@ -2,7 +2,7 @@
 import Foundation
 @testable import DiiaNetwork
 
-class JSONDecoderConfigMock: JSONDecoderConfigProtocol {
+final class JSONDecoderConfigMock: JSONDecoderConfigProtocol {
     func jsonDecoder() -> JSONDecoder {
         return .init()
     }

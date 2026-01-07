@@ -2,7 +2,7 @@
 import Foundation
 import DiiaNetwork
 
-class ProgressHandlerMock: ProgressHandler {
+final class ProgressHandlerMock: ProgressHandler {
     var onShowProgress: ((Bool) -> Void)?
     var onHideProgress: ((Bool) -> Void)?
 

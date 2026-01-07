@@ -4,7 +4,7 @@ import ReactiveKit
 import Alamofire
 @testable import DiiaNetwork
 
-class DataRequestExtensionTests: XCTestCase {
+final class DataRequestExtensionTests: XCTestCase {
     
     // MARK: - DataRequest+Response
     func test_objectResponse_withGeneralModel() {

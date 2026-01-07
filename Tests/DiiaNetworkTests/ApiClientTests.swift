@@ -4,7 +4,7 @@ import ReactiveKit
 import Alamofire
 @testable import DiiaNetwork
 
-class ApiClientTests: XCTestCase {
+final class ApiClientTests: XCTestCase {
 
     var sut: ApiClient<ApiServiceStub>!
     var progressHandler: ProgressHandlerMock!

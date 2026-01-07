@@ -2,7 +2,7 @@
 import XCTest
 @testable import DiiaNetwork
 
-class GeneralResponseTests: XCTestCase {
+final class GeneralResponseTests: XCTestCase {
 
     func testInitFromDecoder_withValidJsonData_parsesCorrectly() throws {
         // Arrange

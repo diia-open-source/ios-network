@@ -2,7 +2,7 @@
 import Foundation
 import DiiaNetwork
 
-class ApiServiceStub: CommonService {
+final class ApiServiceStub: CommonService {
     var method: HTTPMethod = .get
     
     var path: String = ""

@@ -2,7 +2,7 @@
 import Foundation
 @testable import DiiaNetwork
 
-class ResponseErrorHandlerMock: ResponseErrorHandler {
+final class ResponseErrorHandlerMock: ResponseErrorHandler {
     var onHandleError: ((Bool) -> Void)?
     
     func handleError(error: NSError) {
