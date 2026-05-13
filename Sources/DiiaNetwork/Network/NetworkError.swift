@@ -10,6 +10,7 @@ public indirect enum NetworkError: LocalizedError {
     case badUrl
     case processableError(ErrorModel)
     case noInternet
+    case cancelled
 
     public var errorDescription: String? {
         switch self {
@@ -29,6 +30,8 @@ public indirect enum NetworkError: LocalizedError {
             return errorModel.message
         case .noInternet:
             return localizedStringFor("network_no_internet", comment: "")
+        case .cancelled:
+            return localizedStringFor("network_request_cancelled", comment: "")
         }
     }
 }
@@ -49,6 +52,8 @@ extension NetworkError: Equatable {
         case (.processableError, .processableError):
             return true
         case (.noInternet, .noInternet):
+            return true
+        case (.cancelled, .cancelled):
             return true
         default:
             return false

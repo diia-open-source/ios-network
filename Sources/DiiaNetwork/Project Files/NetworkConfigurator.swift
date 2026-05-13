@@ -4,6 +4,7 @@ import Alamofire
 
 public final class NetworkConfiguration {
     public static let `default`: NetworkConfiguration = NetworkConfiguration()
+    
     public private(set) var logger: NetworkLoggerProtocol?
     public private(set) var httpStatusCodeHandler: HTTPStatusCodeHandler?
     public private(set) var interceptor: RequestInterceptor?

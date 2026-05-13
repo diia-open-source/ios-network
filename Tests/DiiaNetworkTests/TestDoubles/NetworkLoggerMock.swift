@@ -7,4 +7,3 @@ final class NetworkLoggerMock: NetworkLoggerProtocol {
         items.forEach { print($0) }
     }
 }
-

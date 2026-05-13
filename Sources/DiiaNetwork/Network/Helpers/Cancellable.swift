@@ -1,0 +1,4 @@
+
+protocol Cancellable {
+    func cancel()
+}

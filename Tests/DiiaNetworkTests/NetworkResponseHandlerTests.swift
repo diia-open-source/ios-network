@@ -57,12 +57,12 @@ final class NetworkResponseHandlerTests: XCTestCase {
     func test_processResponse_withErrorResponseHandler() {
         // Arrange
         let handler = NetworkResponseHandler<GeneralResponse>()
-        let errorHandler = ResponseErrorHandlerMock()
+        let errorHandler = ResponseErrorHandlerStub()
         NetworkConfiguration.default.set(responseErrorHandler: errorHandler)
         
         let expectation = self.expectation(description: "process response with ErrorResponseHandler")
         var isHandleErrorCalled = false
-        errorHandler.onHandleError = { _ in
+        errorHandler.onHandleCalled = { _ in
             isHandleErrorCalled.toggle()
             expectation.fulfill()
         }

@@ -123,8 +123,6 @@ public final class NetworkResponseHandler<GeneralModel: GeneralNetworkResponse> 
     }
     
     func failedHandlingResponse(error: Error) {
-        if let logger = logger {
-            logger.log(error)
-        }
+        logger?.logError(error)        
     }
 }

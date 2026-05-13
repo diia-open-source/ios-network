@@ -1,23 +1,28 @@
 
 import Foundation
 
-public struct NSErrorAdapter: NSErrorHandler {
-    
-    public init() {
+protocol ResponseDomainErrorChecker {
+    func domainError(from: NSError) -> NetworkError?
+}
+
+enum NSErrorAdapterError: Error {
+    case domainError(message: String, urlErrorCode: Int)
+    case other(error: Error)
+}
+
+public struct NSErrorAdapter {
+    // MARK: - Init
+    public init() {}
         
-    }
-    
-    public func validateForNSError(error: Error?) throws {
-        guard let error = error else {
-            return
-        }
-        let nsError = error as NSError
-        guard nsError.domain == NSURLErrorDomain else {
-            return
+    // MARK: - Private -
+    private func typedError(from error: NSError) -> NSErrorAdapterError {
+        guard error.domain == NSURLErrorDomain else {
+            return .other(error: error)
         }
         
-        let urlErrorCode = nsError.code
         let message: String
+        let urlErrorCode = error.code
+        
         switch urlErrorCode {
         case NSURLErrorNotConnectedToInternet,
              NSURLErrorNetworkConnectionLost,
@@ -37,6 +42,38 @@ public struct NSErrorAdapter: NSErrorHandler {
             message = localizedStringFor("network_error_unknown_network_error", comment: "")
         }
         
-        throw NetworkError.nsUrlErrorDomain(message, urlErrorCode)
+        return .domainError(message: message, urlErrorCode: urlErrorCode)
+    }
+}
+
+// MARK: - NSErrorAdapter + NSErrorHandler
+extension NSErrorAdapter: NSErrorHandler {
+    public func validateForNSError(error: Error?) throws {
+        guard let error else { return }
+        
+        let nsError = error as NSError
+        
+        let errorType = typedError(from: nsError)
+        
+        switch errorType {
+        case let .domainError(message, urlErrorCode):
+            throw NetworkError.nsUrlErrorDomain(message, urlErrorCode)
+        case .other:
+            break
+        }
+    }
+}
+
+// MARK: - NSErrorAdapter + ResponseDomainErrorChecker
+extension NSErrorAdapter: ResponseDomainErrorChecker {
+    func domainError(from error: NSError) -> NetworkError? {
+        let errorType = typedError(from: error)
+        
+        switch errorType {
+        case let .domainError(message, urlErrorCode):
+            return .nsUrlErrorDomain(message, urlErrorCode)
+        case .other:
+            return nil
+        }
     }
 }

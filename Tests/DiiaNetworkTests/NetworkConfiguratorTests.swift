@@ -48,14 +48,12 @@ final class NetworkConfigurationTests: XCTestCase {
         let sut = createSut()
         
         // Act
-        sut.set(logger: NetworkLoggerMock())
         sut.set(httpStatusCodeHandler: HTTPStatusCodeHandlerMock())
         sut.set(jsonDecoderConfig: JSONDecoderConfigMock())
-        sut.set(responseErrorHandler: ResponseErrorHandlerMock())
+        sut.set(responseErrorHandler: ResponseErrorHandlerStub())
         sut.set(analyticsHandler: AnalyticsNetworkHandlerMock())
         
         // Assert
-        XCTAssertNotNil(sut.logger)
         XCTAssertNotNil(sut.httpStatusCodeHandler)
         XCTAssertNotNil(sut.jsonDecoderConfig)
         XCTAssertNotNil(sut.responseErrorHandler)

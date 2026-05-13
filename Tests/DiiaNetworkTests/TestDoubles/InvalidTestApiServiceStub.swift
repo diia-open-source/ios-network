@@ -1,10 +1,10 @@
 
 import Foundation
-import DiiaNetwork
+@testable import DiiaNetwork
 
-final class ApiServiceStub: CommonService {
+final class InvalidTestApiServiceStub: CommonService {
     let method: HTTPMethod = .get
-    let path: String = "https://google.com/"
+    let path: String = ""
     let parameters: [String: Any]? = nil
     let headers: [String : String]? = nil
     let timeoutInterval: TimeInterval = 0.5
